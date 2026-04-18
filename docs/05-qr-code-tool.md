@@ -20,11 +20,38 @@ The key API used is `QRCode.toCanvas(canvasElement, text, options)`, which rende
 
 ## Inputs
 
-| Input              | Type     | Range / Options         | Default  |
-|--------------------|----------|-------------------------|----------|
-| Text / URL field   | Text     | Any string              | —        |
-| Size               | Slider   | 128px – 512px           | 256px    |
-| Error correction   | Select   | L, M, Q, H              | M        |
+The tool has two **modes** selectable via a tab toggle:
+
+### Mode: Text / URL (default)
+
+| Input            | Type   | Description             |
+|------------------|--------|-------------------------|
+| Text or URL      | Text   | Any string to encode    |
+
+### Mode: Wi-Fi
+
+Generates a QR code a phone can scan to automatically join a Wi-Fi network.
+
+| Input            | Type     | Description                                    |
+|------------------|----------|------------------------------------------------|
+| Network Name     | Text     | Wi-Fi SSID                                     |
+| Security         | Select   | WPA/WPA2/WPA3, WEP, or None                    |
+| Password         | Password | With show/hide toggle; hidden when None selected |
+| Hidden network   | Checkbox | Set H=true in the WIFI: string                 |
+
+Wi-Fi QR format: `WIFI:T:WPA;S:<ssid>;P:<password>;H:false;;`
+
+Special characters in SSID and password (`\`, `;`, `,`, `"`, `'`, `:`) are escaped with a backslash by `escapeWifi()`.
+
+### Shared inputs
+
+| Input              | Type     | Range / Options  | Default  |
+|--------------------|----------|------------------|----------|
+| Label              | Text     | Any string       | —        |
+| Size               | Slider   | 128px – 512px    | 256px    |
+| Error correction   | Select   | L, M, Q, H       | M        |
+
+The **label** is optional free text rendered below the QR code directly onto the canvas — it is included in the downloaded PNG.
 
 ### Error correction levels explained
 
@@ -34,6 +61,8 @@ The key API used is `QRCode.toCanvas(canvasElement, text, options)`, which rende
 | M     | ~15%              | General use (default)           |
 | Q     | ~25%              | Printed with potential damage   |
 | H     | ~30%              | Logos overlaid on the QR code   |
+
+The label for this field includes a small **ⓘ info button** that shows a tooltip popover on hover or click, explaining the levels in plain language.
 
 ---
 
@@ -56,6 +85,7 @@ const size = ref(256)
 const errorLevel = ref('M')
 const canvasRef = ref(null)
 const isEmpty = ref(true)
+const showTooltip = ref(false)  // controls error correction tooltip visibility
 
 let debounceTimer = null
 

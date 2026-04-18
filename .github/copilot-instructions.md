@@ -42,10 +42,12 @@ A client-side Vue 3 + Vite web application that hosts a collection of browser-ba
 ## Styling Rules
 
 - All styles via Tailwind utility classes — no `<style>` blocks unless absolutely necessary
-- Cards use: `bg-white rounded-2xl border border-gray-200 shadow-sm p-6`
+- Tool cards use a **colored gradient banner** at top (icon) + white text section below — use `overflow-hidden` on the card wrapper
+- Available card `color` values: `blue`, `green`, `purple`, `orange`, `pink`, `teal` — always assign one per tool
 - Primary action buttons use: `bg-blue-600 text-white hover:bg-blue-700`
 - Max content width: `max-w-5xl mx-auto` (set in `App.vue`, not repeated in views)
 - Tool panels: `max-w-lg`
+- Hover effects on cards: `hover:shadow-xl hover:-translate-y-1 transition-all duration-200`
 
 ## Current Routes
 
@@ -59,7 +61,7 @@ A client-side Vue 3 + Vite web application that hosts a collection of browser-ba
 1. Create `src/components/tools/NewToolName.vue`
 2. Create `src/views/NewToolNameView.vue`
 3. Add route to `src/router/index.js` (lazy loaded)
-4. Add card object to `tools` array in `src/views/HomeView.vue`
+4. Add card object to `tools` array in `src/views/HomeView.vue` — include a `color` field (blue, green, purple, orange, pink, teal)
 
 See `docs/06-adding-new-tools.md` for the full pattern.
 

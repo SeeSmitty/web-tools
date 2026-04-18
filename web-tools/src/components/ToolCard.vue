@@ -4,19 +4,38 @@ defineProps({
   description: String,
   icon: String,
   route: String,
+  color: { type: String, default: 'blue' },
 })
+
+const gradients = {
+  blue:   'from-blue-400 to-indigo-600',
+  green:  'from-emerald-400 to-teal-600',
+  purple: 'from-purple-400 to-violet-600',
+  orange: 'from-orange-400 to-amber-500',
+  pink:   'from-pink-400 to-rose-600',
+  teal:   'from-teal-400 to-cyan-600',
+}
 </script>
 
 <template>
   <RouterLink
     :to="route"
-    class="group block bg-white rounded-2xl border border-gray-200 shadow-sm p-6
-           hover:shadow-md hover:border-blue-300 transition-all duration-200"
+    class="group block bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden
+           hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
   >
-    <div class="text-4xl mb-4">{{ icon }}</div>
-    <h2 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
-      {{ name }}
-    </h2>
-    <p class="text-sm text-gray-500 mt-1">{{ description }}</p>
+    <!-- Gradient banner with icon -->
+    <div
+      :class="`bg-gradient-to-br ${gradients[color] ?? gradients.blue} flex items-center justify-center h-28`"
+    >
+      <span class="text-5xl drop-shadow-md">{{ icon }}</span>
+    </div>
+
+    <!-- Text -->
+    <div class="p-5">
+      <h2 class="text-base font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+        {{ name }}
+      </h2>
+      <p class="text-sm text-gray-500 mt-1">{{ description }}</p>
+    </div>
   </RouterLink>
 </template>
