@@ -20,8 +20,8 @@ const gradients = {
 <template>
   <RouterLink
     :to="route"
-    class="group block bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden
-           hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+    class="group block rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+    style="background: #252525; border: 1px solid #434343;"
   >
     <!-- Gradient banner with icon -->
     <div
@@ -32,10 +32,10 @@ const gradients = {
 
     <!-- Text -->
     <div class="p-5">
-      <h2 class="text-base font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
+      <h2 class="text-base font-semibold transition-colors" style="color: #e8e8e8;">
         {{ name }}
       </h2>
-      <p class="text-sm text-gray-500 mt-1">{{ description }}</p>
+      <p class="text-sm mt-1" style="color: #b6b6b6;">{{ description }}</p>
     </div>
   </RouterLink>
 </template>

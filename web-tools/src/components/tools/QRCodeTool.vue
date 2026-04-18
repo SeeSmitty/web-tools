@@ -101,56 +101,56 @@ function downloadPNG() {
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 space-y-6 max-w-lg">
+  <div class="rounded-2xl shadow-sm p-6 space-y-6 max-w-lg" style="background: #252525; border: 1px solid #434343;">
 
     <!-- Mode tabs -->
-    <div class="flex rounded-lg border border-gray-200 overflow-hidden text-sm font-medium">
+    <div class="flex rounded-lg overflow-hidden text-sm font-medium" style="border: 1px solid #434343;">
       <button
         type="button"
         @click="mode = 'text'"
-        :class="mode === 'text'
-          ? 'flex-1 py-2 bg-blue-600 text-white transition-colors'
-          : 'flex-1 py-2 text-gray-600 hover:bg-gray-50 transition-colors'"
+        :style="mode === 'text'
+          ? 'flex: 1; padding: 8px; background: #ffcc00; color: #1c1c1c; transition: all .15s;'
+          : 'flex: 1; padding: 8px; color: #b6b6b6; background: #1c1c1c; transition: all .15s;'"
       >Text / URL</button>
       <button
         type="button"
         @click="mode = 'wifi'"
-        :class="mode === 'wifi'
-          ? 'flex-1 py-2 bg-blue-600 text-white border-l border-blue-500 transition-colors'
-          : 'flex-1 py-2 text-gray-600 hover:bg-gray-50 border-l border-gray-200 transition-colors'"
+        :style="mode === 'wifi'
+          ? 'flex: 1; padding: 8px; background: #ffcc00; color: #1c1c1c; border-left: 1px solid #93870a; transition: all .15s;'
+          : 'flex: 1; padding: 8px; color: #b6b6b6; background: #1c1c1c; border-left: 1px solid #434343; transition: all .15s;'"
       >📶 Wi-Fi</button>
     </div>
 
     <!-- Text/URL input -->
     <div v-if="mode === 'text'">
-      <label class="block text-sm font-medium text-gray-700 mb-1">Text or URL</label>
+      <label class="block text-sm font-medium mb-1" style="color: #d7cfbe;">Text or URL</label>
       <input
         v-model="inputText"
         type="text"
         placeholder="https://example.com"
-        class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm
-               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        class="w-full rounded-lg px-3 py-2 text-sm focus:outline-none"
+        style="background: #191919; border: 1px solid #434343; color: #f0e7d5;"
       />
     </div>
 
     <!-- Wi-Fi fields -->
     <div v-else class="space-y-4">
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Network Name (SSID)</label>
+        <label class="block text-sm font-medium mb-1" style="color: #d7cfbe;">Network Name (SSID)</label>
         <input
           v-model="wifiSsid"
           type="text"
           placeholder="My Home Network"
-          class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          class="w-full rounded-lg px-3 py-2 text-sm focus:outline-none"
+          style="background: #191919; border: 1px solid #434343; color: #f0e7d5;"
         />
       </div>
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">Security</label>
+        <label class="block text-sm font-medium mb-1" style="color: #d7cfbe;">Security</label>
         <select
           v-model="wifiSecurity"
-          class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm
-                 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full rounded-lg px-3 py-2 text-sm focus:outline-none"
+          style="background: #191919; border: 1px solid #434343; color: #f0e7d5;"
         >
           <option value="WPA">WPA / WPA2 / WPA3</option>
           <option value="WEP">WEP</option>
@@ -158,47 +158,48 @@ function downloadPNG() {
         </select>
       </div>
       <div v-if="wifiSecurity !== 'nopass'">
-        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <label class="block text-sm font-medium mb-1" style="color: #d7cfbe;">Password</label>
         <div class="relative">
           <input
             v-model="wifiPassword"
             :type="showWifiPassword ? 'text' : 'password'"
             placeholder="Enter Wi-Fi password"
-            class="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 text-sm
-                   focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            class="w-full rounded-lg px-3 py-2 pr-10 text-sm focus:outline-none"
+            style="background: #191919; border: 1px solid #434343; color: #f0e7d5;"
           />
           <button
             type="button"
             @click="showWifiPassword = !showWifiPassword"
-            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 text-base leading-none"
+            class="absolute right-3 top-1/2 -translate-y-1/2 text-base leading-none"
+            style="color: #b6b6b6;"
             :aria-label="showWifiPassword ? 'Hide password' : 'Show password'"
           >{{ showWifiPassword ? '🙈' : '👁️' }}</button>
         </div>
       </div>
-      <label class="flex items-center gap-2 text-sm text-gray-700 cursor-pointer select-none">
-        <input v-model="wifiHidden" type="checkbox" class="rounded border-gray-300 accent-blue-600" />
+      <label class="flex items-center gap-2 text-sm cursor-pointer select-none" style="color: #d7cfbe;">
+        <input v-model="wifiHidden" type="checkbox" class="rounded accent-yellow-400" style="border-color: #434343;" />
         Hidden network (SSID is not broadcast)
       </label>
     </div>
 
     <!-- Label -->
     <div>
-      <label class="block text-sm font-medium text-gray-700 mb-1">
-        Label <span class="text-gray-400 font-normal">(optional — baked into the PNG)</span>
+      <label class="block text-sm font-medium mb-1" style="color: #d7cfbe;">
+        Label <span class="font-normal" style="color: #696969;">(optional — baked into the PNG)</span>
       </label>
       <input
         v-model="label"
         type="text"
         placeholder="e.g. Scan to connect"
-        class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm
-               focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        class="w-full rounded-lg px-3 py-2 text-sm focus:outline-none"
+        style="background: #191919; border: 1px solid #434343; color: #f0e7d5;"
       />
     </div>
 
     <!-- Size slider -->
     <div>
-      <label class="block text-sm font-medium text-gray-700 mb-1">
-        Size: <span class="text-blue-600 font-semibold">{{ size }}px</span>
+      <label class="block text-sm font-medium mb-1" style="color: #d7cfbe;">
+        Size: <span class="font-semibold" style="color: #ffcc00;">{{ size }}px</span>
       </label>
       <input
         v-model.number="size"
@@ -206,9 +207,9 @@ function downloadPNG() {
         min="128"
         max="512"
         step="32"
-        class="w-full accent-blue-600"
+        class="w-full accent-yellow-400"
       />
-      <div class="flex justify-between text-xs text-gray-400 mt-1">
+      <div class="flex justify-between text-xs mt-1" style="color: #696969;">
         <span>128px</span>
         <span>512px</span>
       </div>
@@ -217,7 +218,7 @@ function downloadPNG() {
     <!-- Error correction level -->
     <div>
       <div class="flex items-center gap-1.5 mb-1">
-        <label class="text-sm font-medium text-gray-700">Error Correction</label>
+        <label class="text-sm font-medium" style="color: #d7cfbe;">Error Correction</label>
         <div class="relative">
           <button
             type="button"
@@ -226,9 +227,8 @@ function downloadPNG() {
             @focus="showTooltip = true"
             @blur="showTooltip = false"
             @click="showTooltip = !showTooltip"
-            class="w-4 h-4 rounded-full bg-gray-200 hover:bg-blue-100 text-gray-500
-                   hover:text-blue-600 text-xs font-bold flex items-center justify-center
-                   transition-colors leading-none"
+            class="w-4 h-4 rounded-full text-xs font-bold flex items-center justify-center transition-colors leading-none"
+            style="background: #434343; color: #b6b6b6;"
             aria-label="What is error correction?"
           >i</button>
           <div
@@ -248,8 +248,8 @@ function downloadPNG() {
       </div>
       <select
         v-model="errorLevel"
-        class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm
-               focus:outline-none focus:ring-2 focus:ring-blue-500"
+        class="w-full rounded-lg px-3 py-2 text-sm focus:outline-none"
+        style="background: #191919; border: 1px solid #434343; color: #f0e7d5;"
       >
         <option value="L">L — Low</option>
         <option value="M">M — Medium (recommended)</option>
@@ -262,23 +262,24 @@ function downloadPNG() {
     <div class="flex flex-col items-center gap-4">
       <div
         v-if="isEmpty"
-        class="flex items-center justify-center text-gray-400 text-sm border-2
-               border-dashed border-gray-200 rounded-xl"
-        :style="{ width: size + 'px', height: size + 'px' }"
+        class="flex items-center justify-center text-sm rounded-xl"
+        :style="{ width: size + 'px', height: size + 'px', border: '2px dashed #434343', color: '#696969' }"
       >
         {{ mode === 'wifi' ? 'Enter a network name above' : 'Enter text above' }}
       </div>
       <canvas
         ref="canvasRef"
         :class="{ hidden: isEmpty }"
-        class="rounded-lg border border-gray-100"
+        class="rounded-lg"
+        style="border: 1px solid #434343;"
       />
 
       <button
         @click="downloadPNG"
         :disabled="isEmpty"
-        class="w-full py-2 px-4 bg-blue-600 text-white text-sm font-semibold rounded-lg
-               hover:bg-blue-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        class="w-full py-2 px-4 text-sm font-semibold rounded-lg transition-colors
+               disabled:opacity-40 disabled:cursor-not-allowed"
+        style="background: linear-gradient(#93bd20, #659e10); border: 1px solid #5d910b; color: white; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 3px 7px rgba(0,0,0,.7);"
       >
         Download PNG
       </button>

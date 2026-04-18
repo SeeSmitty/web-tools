@@ -17,10 +17,10 @@ const tools = [
   <div>
     <!-- Hero header -->
     <div class="mb-10">
-      <h1 class="text-4xl font-extrabold text-gray-900 mb-3">
-        Web <span class="bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">Tools</span>
+      <h1 class="text-4xl font-extrabold mb-3" style="color: #e8e8e8;">
+        Web <span style="color: #ffcc00;">Tools</span>
       </h1>
-      <p class="text-gray-500 text-lg">Simple, fast, browser-based utilities. No signup required.</p>
+      <p class="text-lg" style="color: #b6b6b6;">Simple, fast, browser-based utilities. No signup required.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -36,7 +36,7 @@ const tools = [
     </div>
 
     <!-- Privacy notice -->
-    <div class="mt-12 flex items-start gap-3 rounded-2xl bg-green-50 border border-green-100 px-5 py-4 text-sm text-green-800">
+    <div class="mt-12 flex items-start gap-3 rounded-2xl px-5 py-4 text-sm" style="background: #252525; border: 1px solid #434343; color: #f0e7d5;">
       <span class="text-lg leading-tight">🔒</span>
       <div>
         <span class="font-semibold">Private by design.</span>
