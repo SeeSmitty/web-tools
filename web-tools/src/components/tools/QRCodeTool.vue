@@ -91,8 +91,10 @@ watch(
 
 function downloadPNG() {
   if (!canvasRef.value || isEmpty.value) return
+  const raw = mode.value === 'wifi' ? wifiSsid.value : label.value
+  const name = raw.trim().replace(/[^a-z0-9_\-. ]/gi, '').trim().replace(/\s+/g, '-') || 'qrcode'
   const link = document.createElement('a')
-  link.download = 'qrcode.png'
+  link.download = `${name}.png`
   link.href = canvasRef.value.toDataURL('image/png')
   link.click()
 }

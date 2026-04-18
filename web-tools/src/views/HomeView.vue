@@ -34,5 +34,14 @@ const tools = [
         :color="tool.color"
       />
     </div>
+
+    <!-- Privacy notice -->
+    <div class="mt-12 flex items-start gap-3 rounded-2xl bg-green-50 border border-green-100 px-5 py-4 text-sm text-green-800">
+      <span class="text-lg leading-tight">🔒</span>
+      <div>
+        <span class="font-semibold">Private by design.</span>
+        Everything runs directly in your browser. No data is sent to any server, stored, or logged — not even temporarily. Once you close the tab, nothing remains.
+      </div>
+    </div>
   </div>
 </template>
