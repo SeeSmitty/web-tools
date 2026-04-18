@@ -9,6 +9,11 @@ A collection of simple, fast, browser-based utility tools. No accounts, no track
 | Tool | Description |
 |------|-------------|
 | [QR Code Generator](https://SeeSmitty.github.io/web-tools/#/qr) | Generate QR codes for text, URLs, or Wi-Fi credentials |
+| [Color Picker](https://SeeSmitty.github.io/web-tools/#/color-picker) | Pick a color, get HEX/RGB/HSL values, generate palettes |
+| [Base64 Encoder / Decoder](https://SeeSmitty.github.io/web-tools/#/base64) | Encode text or files to Base64, or decode back |
+| [UUID Generator](https://SeeSmitty.github.io/web-tools/#/uuid) | Bulk-generate v4 UUIDs and copy with one click |
+| [Password Generator](https://SeeSmitty.github.io/web-tools/#/password) | Generate secure passwords with strength meter |
+| [JSON Formatter](https://SeeSmitty.github.io/web-tools/#/json) | Format or minify JSON with syntax highlighting |
 
 ## Tech Stack
 

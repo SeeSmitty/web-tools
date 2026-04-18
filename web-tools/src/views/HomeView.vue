@@ -4,10 +4,45 @@ import ToolCard from '../components/ToolCard.vue'
 const tools = [
   {
     name: 'QR Code Generator',
-    description: 'Generate a QR code from any URL or text. Download as PNG.',
+    description: 'Generate a QR code from any URL or text. Supports Wi-Fi credentials. Download as PNG.',
     icon: '🔲',
     route: '/qr',
     color: 'blue',
+  },
+  {
+    name: 'Color Picker',
+    description: 'Pick a color and get HEX, RGB, and HSL values. Generate complementary, triadic, and analogous palettes.',
+    icon: '🎨',
+    route: '/color-picker',
+    color: 'purple',
+  },
+  {
+    name: 'Base64 Encoder / Decoder',
+    description: 'Encode text or files to Base64, or decode Base64 back to text. Includes image preview.',
+    icon: '🔤',
+    route: '/base64',
+    color: 'orange',
+  },
+  {
+    name: 'UUID Generator',
+    description: 'Bulk-generate v4 UUIDs using the browser crypto API. Copy one or all with a click.',
+    icon: '🪪',
+    route: '/uuid',
+    color: 'teal',
+  },
+  {
+    name: 'Password Generator',
+    description: 'Generate secure passwords with custom length and character sets. Includes entropy-based strength meter.',
+    icon: '🔑',
+    route: '/password',
+    color: 'green',
+  },
+  {
+    name: 'JSON Formatter',
+    description: 'Format or minify JSON with syntax highlighting and inline validation.',
+    icon: '📋',
+    route: '/json',
+    color: 'pink',
   },
   // Add future tools here. A card will appear automatically.
 ]
